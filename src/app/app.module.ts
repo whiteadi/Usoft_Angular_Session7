@@ -1,16 +1,20 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgModule, DoBootstrap, Injector } from '@angular/core';
+import { createCustomElement } from '@angular/elements';
 
-import { AppComponent } from './app.component';
+import { InfoGridComponent } from './info-grid/info-grid.component';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [InfoGridComponent],
+    imports: [BrowserModule],
+    providers: [],
+    entryComponents: [InfoGridComponent]
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+    constructor(injector: Injector) {
+        const el = createCustomElement(InfoGridComponent, { injector });
+        customElements.define('info-grid', el);
+    }
+
+    ngDoBootstrap() { }
+}

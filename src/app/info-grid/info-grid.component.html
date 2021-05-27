@@ -1,0 +1,47 @@
+<div>
+  <div *ngIf="!persons">
+    <h3>Wait for it</h3>
+  </div>
+  <!-- Persons list table, it hides when there is no person -->
+  <div *ngIf="persons">
+    <h3>Persons List</h3>
+
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>Person Id</th>
+            <th>Name</th>
+            <th>ADDRESS</th>
+            <th>Rezidency</th>
+            <th>AREA CODE</th>
+            <th>Email</th>
+            <th>Bank Account</th>
+            <th>Birth Date</th>
+            <th>Gender</th>
+            <th>Discount</th>
+            <th>Job?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of persons">
+            <td>{{ person.PERSON_ID }}</td>
+            <td>{{ person.FIRST_NAME }} {{ person.FAMILY_NAME }}</td>
+            <td>{{ person.ADDRESS }}</td>
+            <td>resident of {{ person.CITY }} in {{ person.COUNTRY }}</td>
+            <td>{{ person.AREA_CODE }}</td>
+            <td>{{ person.EMAIL }}</td>
+            <td>{{ person.BANK_ACCOUNT }}</td>
+            <td>{{ person.BIRTH_DATE }}</td>
+            <td>{{ person.GENDER == "M" ? "Male" : "Female" }}</td>
+            <td>{{ person.DISCOUNT }}</td>
+            <td>
+              {{ person.GUIDE == "Y" ? "Guide" : "" }}
+              {{ person.STAFF == "Y" ? "Staff" : "" }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
